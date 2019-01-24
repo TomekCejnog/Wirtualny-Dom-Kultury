@@ -29,5 +29,5 @@ public class Event {
 
     boolean isEmptyPlace;
 
-
+//k
 }
