@@ -40,7 +40,7 @@ public class AdminUserController {
         return "admin/userlist";
     }
 
-    @GetMapping("/remove")
+    @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public String removeUser(@RequestParam(name = "userToRemoveId") Long id){
     appUserService.remove(id);
     return "admin/userlist";

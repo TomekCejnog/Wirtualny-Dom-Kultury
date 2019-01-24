@@ -29,7 +29,7 @@
             <div class="col-md-2" th:text="${user.getPhoneNumber()}"></div>
             <div class="col-md-3" style="font-size:75%" th:text="${user_roles[iter.index]}"></div>
             <div class="col-md-1" style="text-align:center; font-size:75%" >
-                <a th:href="@{'/remove?userToRemoveId=' + ${user.getId()}}">Remove</a></div>
+                <a th:href="@{'/admin/remove?userToRemoveId=' + ${user.getId()}}">Remove</a></div>
             <div class="col-md-1" style="text-align:center; font-size:75%"><a>Update</a></div>
 
         </div>
