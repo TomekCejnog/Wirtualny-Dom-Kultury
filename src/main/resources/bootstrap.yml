@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: projekt-wirtualny-dom-kultury
+  cloud:
+    enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8010/eureka
+
