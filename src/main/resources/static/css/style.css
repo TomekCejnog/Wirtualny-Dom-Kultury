@@ -97,3 +97,13 @@
 .header{
     background-color: #aaaaaa;
 }
+.picture{
+    width: 100%;
+    position: absolute;
+    background: url("wirtualny.jpg") 0px 50px;
+
+}
+
+.wider{
+    max-width: 1200px !important;
+}

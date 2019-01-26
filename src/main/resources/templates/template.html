@@ -26,8 +26,11 @@
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
             <li class="navbar-nav mr-auto">
-                <a class="nav-link" th:href="@{/}">Events</a>
+                <a class="nav-link" th:href="@{/organizer/eventAdd}">Events Management</a>
             </li>
+                <li class="navbar-nav mr-auto">
+                    <a class="nav-link" th:href="@{/organizer/eventList}">Events List</a>
+                </li>
                 <li class="nav-item" sec:authorize="isAuthenticated() && hasRole('ADMIN')">
                     <a class="nav-link" th:href="@{/admin/users}">User Management</a>
                 </li>
@@ -36,7 +39,7 @@
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="nav-link" th:href="@{/login}">Login</a>
                 </li>
-                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                <li class="nav-item" sec:authorize="isAuthenticated() && hasRole('ADMIN')">
                     <a class="nav-link" th:href="@{/register}">Register</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">

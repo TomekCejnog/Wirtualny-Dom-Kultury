@@ -42,6 +42,6 @@ public class IndexController {
     if(!result){
         return "redirect:/register?error=Error while registration. Probably username exists.";
     }
-    return "redirect:/login";
+    return "redirect:/admin/users";
     }
 }

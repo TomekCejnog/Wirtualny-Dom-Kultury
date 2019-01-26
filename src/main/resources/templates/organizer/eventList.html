@@ -1,0 +1,49 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="template :: scripts_header"/>
+    <meta charset="UTF-8">
+    <title>Events List Page</title>
+</head>
+<body class="picture" >
+<th:block th:include="template :: navigator"/>
+<main role="main" class="container wider">
+    <h2 class="row col-md-3" style="color: #333333; font-family:'Harlow Solid Italic'">Events List Page</h2>
+    <hr>
+    <hr>
+    <div class="row col-md-12">
+
+        <div class="row col-md-12">
+            <div class="col-md-1"><b>Id</b></div>
+            <div class="col-md-2"><b>Date</b></div>
+            <div class="col-md-1"><b>Duration</b></div>
+            <div class="col-md-2"><b>Event</b></div>
+            <div class="col-md-2"><b>Description</b></div>
+            <div class="col-md-2"><b>Places available</b></div>
+            <div class="col-md-1" style="text-align:center;"><b>Options</b></div>
+        </div>
+
+        <div class="row col-md-12" th:each="event, iter : ${event_list}">
+            <div class="col-md-1" th:text="${event.getId()}"></div>
+            <div class="col-md-2" th:text="${event.getDate()}"></div>
+            <div class="col-md-1" th:text="${event.getEventLenght()}"></div>
+            <div class="col-md-2" th:text="${event.getEventName()}"></div>
+            <div class="col-md-2" th:text="${event.getDescription()}"></div>
+            <div class="col-md-2" th:text="${event.getAccessibility()}"></div>
+            <!--<div class="col-md-2" th:text="${event.getOwner()}"></div>-->
+            <!--<div class="col-md-3" style="font-size:75%" th:text="${user_roles[iter.index]}"></div>-->
+            <div class="col-md-1" style="text-align:center; font-size:75%" >
+                <a th:href="@{'/organizer/remove?eventToRemoveId=' + ${event.getId()}}">Remove</a></div>
+            <div class="col-md-1" style="text-align:center; font-size:75%"><a>Update</a></div>
+
+        </div>
+    </div>
+    <hr>
+
+
+
+</main>
+<th:block th:include="template :: scripts_footer"/>
+</body>
+</html>

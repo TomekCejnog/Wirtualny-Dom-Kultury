@@ -43,7 +43,8 @@ public class AdminUserController {
     @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public String removeUser(@RequestParam(name = "userToRemoveId") Long id){
     appUserService.remove(id);
-    return "admin/userlist";
+//    return "admin/userlist";
+        return "redirect:/admin/users";
     }
 
 

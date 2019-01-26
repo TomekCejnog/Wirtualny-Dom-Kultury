@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.text.DateFormat;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -16,18 +17,17 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String eventName;
 
-    private DateFormat date;
+    private LocalDate date;
 
     private String description;
 
-    private int lenght;
+    private int eventLenght;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private AppUser owner;
 
-    boolean isEmptyPlace;
+    private int accessibility;
 
-//k
 }
