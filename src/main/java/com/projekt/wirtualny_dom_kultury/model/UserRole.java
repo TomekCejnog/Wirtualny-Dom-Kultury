@@ -18,6 +18,6 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //ROLE_ADMIN, ROLE_USER, ROLE_EVENT_ORGANIZER
+    //roles: ROLE_ADMIN, ROLE_USER, ROLE_EVENT_ORGANIZER
     private String name;
 }
