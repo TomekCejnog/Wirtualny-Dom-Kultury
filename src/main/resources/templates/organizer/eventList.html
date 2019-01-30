@@ -14,7 +14,7 @@
     <hr>
     <div class="row col-md-12">
 
-        <div class="row col-md-12">
+        <div style="background-color:tan;color:#333333;padding:20px;" class="row col-md-12">
             <div class="col-md-1"><b>Id</b></div>
             <div class="col-md-2"><b>Date</b></div>
             <div class="col-md-1"><b>Duration</b></div>
@@ -24,7 +24,7 @@
             <div class="col-md-1" style="text-align:center;"><b>Options</b></div>
         </div>
 
-        <div class="row col-md-12" th:each="event, iter : ${event_list}">
+        <div style="background-color:lightgoldenrodyellow;color:#333333;padding:20px;" class="row col-md-12" th:each="event, iter : ${event_list}">
             <div class="col-md-1" th:text="${event.getId()}"></div>
             <div class="col-md-2" th:text="${event.getDate()}"></div>
             <div class="col-md-1" th:text="${event.getEventLenght()}"></div>
@@ -34,7 +34,7 @@
             <!--<div class="col-md-2" th:text="${event.getOwner()}"></div>-->
             <!--<div class="col-md-3" style="font-size:75%" th:text="${user_roles[iter.index]}"></div>-->
             <div class="col-md-1" style="text-align:center; font-size:75%" >
-                <a th:href="@{'/organizer/remove?eventToRemoveId=' + ${event.getId()}}">Remove</a></div>
+                <a th:href="@{'/organizer/removeEvent?eventToRemoveId=' + ${event.getId()}}">Remove</a></div>
             <div class="col-md-1" style="text-align:center; font-size:75%"><a>Update</a></div>
 
         </div>

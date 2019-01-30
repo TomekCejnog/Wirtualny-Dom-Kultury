@@ -28,8 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/webjars/**",
                         "/login").permitAll()
                 .antMatchers(
-                        "/admin/**","/organizer/**",
-                        "/register").hasRole("ADMIN")
+                        "/admin/**").hasRole("ADMIN")
+//                .antMatchers(
+//                        "/organizer/**"
+//                ).hasRole("EVENT_ORGANIZER")
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
