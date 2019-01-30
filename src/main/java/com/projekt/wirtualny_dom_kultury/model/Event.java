@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Data
@@ -29,5 +30,8 @@ public class Event {
     private AppUser owner;
 
     private int accessibility;
+
+    @OneToMany
+    private Set<Reservation> reservations;
 
 }

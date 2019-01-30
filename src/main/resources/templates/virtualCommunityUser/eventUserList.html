@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="template :: scripts_header"/>
+    <meta charset="UTF-8">
+    <title>Events User Page</title>
+</head>
+<body class="picture">
+<th:block th:include="template :: navigator"/>
+<main role="main" class="container wider">
+    <h2 class="row col-md-3" style="color: #333333; font-family:'Harlow Solid Italic'">Events User Page</h2>
+    <hr>
+    <hr>
+    <div class="row col-md-12">
+
+        <div style="background-color:tan;color:#333333;padding:20px;" class="row col-md-12">
+            <div class="col-md-1"><b>Id</b></div>
+            <div class="col-md-2"><b>Date</b></div>
+            <div class="col-md-1"><b>Duration</b></div>
+            <div class="col-md-2"><b>Event</b></div>
+            <div class="col-md-2"><b>Description</b></div>
+            <div class="col-md-2"><b>Places available</b></div>
+            <div class="col-md-1" style="text-align:center;"><b>Options</b></div>
+        </div>
+
+        <div style="background-color:lightgoldenrodyellow;color:#333333;padding:20px;" class="row col-md-12"
+             th:each="event, iter : ${event_user_list}">
+            <div class="col-md-1" th:text="${event.getId()}"></div>
+            <div class="col-md-2" th:text="${event.getDate()}"></div>
+            <div class="col-md-1" th:text="${event.getEventLenght()}"></div>
+            <div class="col-md-2" th:text="${event.getEventName()}"></div>
+            <div class="col-md-2" th:text="${event.getDescription()}"></div>
+            <div class="col-md-2" th:text="${event.getAccessibility() - event.getReservations().size()}"></div>
+
+            <!--<div class="col-md-2" th:text="${event.getOwner()}"></div>-->
+            <!--<div class="col-md-3" style="font-size:75%" th:text="${user_roles[iter.index]}"></div>-->
+            <div class="col-md-1" style="text-align:center; font-size:75%">
+                <a th:if="${(event.getAccessibility() - event.getReservations().size()) > 0}" th:href="@{'/eventUser/reserve/'+${event.getId()}}">Enroll</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+</main>

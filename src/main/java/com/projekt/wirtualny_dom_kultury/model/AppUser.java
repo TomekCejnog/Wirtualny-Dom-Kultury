@@ -37,10 +37,12 @@ public class AppUser {
 
     private String phoneNumber;
 
-
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<UserRole> roles = new HashSet<>();
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private List<Event> eventList;
+
+    @OneToMany(mappedBy = "reserver")
+    private Set<Reservation> reservations;
 }

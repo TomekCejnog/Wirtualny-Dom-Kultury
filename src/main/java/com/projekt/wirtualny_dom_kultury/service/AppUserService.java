@@ -1,6 +1,7 @@
 package com.projekt.wirtualny_dom_kultury.service;
 
 import com.projekt.wirtualny_dom_kultury.model.AppUser;
+import com.projekt.wirtualny_dom_kultury.model.Reservation;
 import com.projekt.wirtualny_dom_kultury.repository.AppUserRepository;
 import com.projekt.wirtualny_dom_kultury.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -60,4 +62,11 @@ public class AppUserService {
     }
 
 
+    public Optional<AppUser> findByUsername(String username) {
+        return appUserRepository.findByUsername(username);
+    }
+
+    public void save(AppUser optionaAppuser) {
+        appUserRepository.save(optionaAppuser);
+    }
 }
