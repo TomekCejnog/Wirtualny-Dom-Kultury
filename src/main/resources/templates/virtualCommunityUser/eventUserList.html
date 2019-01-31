@@ -1,6 +1,6 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:text-align="http://www.w3.org/1999/xhtml">
 <head>
     <th:block th:include="template :: scripts_header"/>
     <meta charset="UTF-8">
@@ -16,10 +16,10 @@
 
         <div style="background-color:tan;color:#333333;padding:20px;" class="row col-md-12">
             <div class="col-md-1"><b>Id</b></div>
-            <div class="col-md-2"><b>Date</b></div>
-            <div class="col-md-1"><b>Duration</b></div>
-            <div class="col-md-2"><b>Event</b></div>
-            <div class="col-md-2"><b>Description</b></div>
+            <div style="text-align:center;" class="col-md-1"><b>Date</b></div>
+            <div style="text-align:center;" class="col-md-1"><b>Duration</b></div>
+            <div style="text-align:center;" class="col-md-2"><b>Event</b></div>
+            <div style="text-align:center;" class="col-md-3"><b>Description</b></div>
             <div class="col-md-2"><b>Places available</b></div>
             <div class="col-md-1" style="text-align:center;"><b>Options</b></div>
         </div>

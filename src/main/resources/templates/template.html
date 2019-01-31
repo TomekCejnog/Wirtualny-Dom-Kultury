@@ -32,8 +32,11 @@
                     <a sec:authorize="isAuthenticated() && hasRole('USER')" class="nav-link"
                        th:href="@{/eventUser/eventUserList}">Event User List</a>
                 </li>
-                <li sec:authorize="isAuthenticated() && hasRole('ADMIN')||hasRole('EVENT_ORGANIZER')" class="navbar-nav mr-auto">
+                <li sec:authorize="isAuthenticated() && hasRole('EVENT_ORGANIZER')" class="navbar-nav mr-auto">
                     <a class="nav-link" th:href="@{/organizer/eventList}">Events List</a>
+                </li>
+                <li sec:authorize="isAuthenticated() && hasRole('ADMIN')||hasRole('EVENT_ORGANIZER')" class="navbar-nav mr-auto">
+                    <a class="nav-link" th:href="@{/organizer/enroledUsers}">Enroled Users List</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated() && hasRole('ADMIN')">
                     <a class="nav-link" th:href="@{/admin/users}">User Management</a>

@@ -1,8 +1,11 @@
 package com.projekt.wirtualny_dom_kultury.service;
 
 import com.projekt.wirtualny_dom_kultury.model.AppUser;
+import com.projekt.wirtualny_dom_kultury.model.Event;
 import com.projekt.wirtualny_dom_kultury.model.Reservation;
 import com.projekt.wirtualny_dom_kultury.repository.AppUserRepository;
+import com.projekt.wirtualny_dom_kultury.repository.EventRepository;
+import com.projekt.wirtualny_dom_kultury.repository.ReservationRepository;
 import com.projekt.wirtualny_dom_kultury.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,19 +21,22 @@ public class AppUserService {
     @Autowired
     private AppUserRepository appUserRepository;
 
-
+    @Autowired
+    private EventRepository eventRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
     @Autowired
     private UserRoleService userRoleService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public boolean register (String username,
-                             String password,
-                             String name,
-                             String lastName,
-                             String email,
-                             String phoneNumber, boolean isOrganizer){
+    public boolean register(String username,
+                            String password,
+                            String name,
+                            String lastName,
+                            String email,
+                            String phoneNumber, boolean isOrganizer) {
         AppUser appUser = new AppUser();
         appUser.setUsername(username);
         appUser.setPassword(bCryptPasswordEncoder.encode(password));
@@ -38,22 +44,29 @@ public class AppUserService {
         appUser.setLastName(lastName);
         appUser.setEmail(email);
         appUser.setPhoneNumber(phoneNumber);
-        if(isOrganizer==true){
+        if (isOrganizer == true) {
             appUser.getRoles().add(userRoleService.getOrganizerRole());
 
-        }else{
+        } else {
             appUser.getRoles().add(userRoleService.getUserRole());
         }
 
-        try{
+        try {
             appUserRepository.saveAndFlush(appUser);
-        }catch (ConstraintViolationException cve){
+        } catch (ConstraintViolationException cve) {
             return false;
         }
         return true;
     }
 
-    public void remove (Long id){
+    public void remove(Long id) {
+        AppUser user = appUserRepository.getOne(id);
+        for (Event e : user.getEventList()) {
+            eventRepository.deleteById(e.getId());
+        }
+        for (Reservation r : user.getReservations()) {
+            reservationRepository.delete(r);
+        }
         appUserRepository.deleteById(id);
     }
 

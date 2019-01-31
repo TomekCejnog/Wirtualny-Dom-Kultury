@@ -14,6 +14,7 @@ import javax.validation.ConstraintViolationException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class EventService {
@@ -44,8 +45,26 @@ public class EventService {
         } catch (ConstraintViolationException cve) {
             return false;
         }
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<AppUser> appUser = appUserService.findByUsername(user.getUsername());
+        AppUser optionaAppuser = appUser.get();
+
+        event.setOwner(optionaAppuser);
+
+        eventRepository.save(event);
+        optionaAppuser.getEventList().add(event);
+        appUserService.save(optionaAppuser);
         return true;
     }
+
+    public List<Event> getEventsOfThisUser(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<AppUser> appUser = appUserService.findByUsername(user.getUsername());
+        AppUser optionaAppuser = appUser.get();
+
+        return optionaAppuser.getEventList();
+    }
+
     public List<Event> getAllEvents() {
         return eventRepository.findAll();
     }
@@ -71,5 +90,20 @@ public class EventService {
 
         optionaAppuser.getReservations().add(reservation);
         appUserService.save(optionaAppuser);
+    }
+
+    public Set<Reservation> getEventWithId(Long eventId) {
+        return eventRepository.getOne(eventId).getReservations();
+    }
+
+    public void approve(Long userId, Long eventId) {
+        System.out.println("Approved");
+        //todo: znalezc event po id w repozytorium
+        // przeszukac rezerwacje tego eventu
+        // znalezc uzytkownika
+        // zatwierdzic rezerwacje
+
+        // zapisac event!
+        // zapisac uzytkownika!
     }
 }

@@ -16,21 +16,21 @@
 
         <div style="background-color:tan;color:#333333;padding:20px;" class="row col-md-12">
             <div class="col-md-1"><b>Id</b></div>
-            <div class="col-md-2"><b>Date</b></div>
-            <div class="col-md-1"><b>Duration</b></div>
-            <div class="col-md-2"><b>Event</b></div>
-            <div class="col-md-2"><b>Description</b></div>
+            <div style="text-align:center;" class="col-md-1"><b>Date</b></div>
+            <div style="text-align:right;" class="col-md-2"><b>Duration (min)</b></div>
+            <div style="text-align:center;" class="col-md-2"><b>Event</b></div>
+            <div style="text-align:center;" class="col-md-3"><b>Description</b></div>
             <div class="col-md-2"><b>Places available</b></div>
             <div class="col-md-1" style="text-align:center;"><b>Options</b></div>
         </div>
 
         <div style="background-color:lightgoldenrodyellow;color:#333333;padding:20px;" class="row col-md-12" th:each="event, iter : ${event_list}">
             <div class="col-md-1" th:text="${event.getId()}"></div>
-            <div class="col-md-2" th:text="${event.getDate()}"></div>
-            <div class="col-md-1" th:text="${event.getEventLenght()}"></div>
-            <div class="col-md-2" th:text="${event.getEventName()}"></div>
-            <div class="col-md-2" th:text="${event.getDescription()}"></div>
-            <div class="col-md-2" th:text="${event.getAccessibility()}"></div>
+            <div  style="text-align:left;" class="col-md-2" th:text="${event.getDate()}"></div>
+            <div  style="text-align:left;" class="col-md-1" th:text="${event.getEventLenght()}"></div>
+            <div  style="text-align:center;" class="col-md-2" th:text="${event.getEventName()}"></div>
+            <div  style="text-align:center;" class="col-md-2" th:text="${event.getDescription()}"></div>
+            <div class="col-md-2" th:text="${event.getAccessibility() - event.getReservations().size()}"></div>
             <!--<div class="col-md-2" th:text="${event.getOwner()}"></div>-->
             <!--<div class="col-md-3" style="font-size:75%" th:text="${user_roles[iter.index]}"></div>-->
             <div class="col-md-1" style="text-align:center; font-size:75%" >

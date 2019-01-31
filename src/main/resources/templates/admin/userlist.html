@@ -13,7 +13,7 @@
 
     <div class="row col-md-12">
 
-        <div class="row col-md-12">
+        <div style="background-color:tan;color:#333333;padding:20px;" class="row col-md-12">
             <div class="col-md-1"><b>Id</b></div>
             <div class="col-md-2"><b>Username</b></div>
             <div class="col-md-2"><b>Email</b></div>
@@ -22,7 +22,7 @@
             <div class="col-md-3" style="text-align:center;"><b>Options</b></div>
         </div>
 
-        <div class="row col-md-12" th:each="user, iter : ${user_list}">
+        <div style="background-color:lightgoldenrodyellow;color:#333333;padding:20px;" class="row col-md-12" th:each="user, iter : ${user_list}">
             <div class="col-md-1" th:text="${user.getId()}"></div>
             <div class="col-md-2" th:text="${user.getUsername()}"></div>
             <div class="col-md-2" th:text="${user.getEmail()}"></div>
